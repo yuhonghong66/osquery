@@ -10,16 +10,18 @@
 
 #pragma once
 
+#include "buffered.h"
+
 #include <chrono>
 #include <memory>
 #include <vector>
+#include <glog/logging.h>
 
 #include <osquery/core.h>
 #include <osquery/dispatcher.h>
-#include <osquery/logger.h>
+#include <osquery/plugins/logger.h>
 
-#include "osquery/logger/plugins/buffered.h"
-#include "osquery/utils/aws_util.h"
+#include <osquery/utils/aws/aws_util.h>
 
 // This macro from the Windows headers is used to map the GetMessage
 // name to either GetMessageW or GetMessageA depending on the UNICODE

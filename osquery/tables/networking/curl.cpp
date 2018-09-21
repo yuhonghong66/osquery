@@ -13,7 +13,7 @@
 #include <boost/numeric/conversion/cast.hpp>
 
 #include <osquery/logger.h>
-#include <osquery/status.h>
+#include <osquery/utils/status.h>
 #include <osquery/tables.h>
 
 #include "osquery/remote/http_client.h"

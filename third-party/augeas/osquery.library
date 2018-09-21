@@ -1,0 +1,10 @@
+library(
+    name = "augeas",
+    version = "1.9.0",
+    platforms = [
+        "linux-x86_64",
+        "macos-x86_64",
+    ],
+    deps = [
+    ],
+)

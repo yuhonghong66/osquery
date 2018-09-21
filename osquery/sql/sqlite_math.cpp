@@ -8,6 +8,8 @@
  *  You may select, at your option, one of the above-listed licenses.
  */
 
+#include <osquery/utils/system/errno.h>
+
 #include <assert.h>
 #include <errno.h>
 
@@ -22,8 +24,6 @@
 #include <functional>
 
 #include <sqlite3.h>
-
-#include "osquery/core/utils.h"
 
 namespace osquery {
 

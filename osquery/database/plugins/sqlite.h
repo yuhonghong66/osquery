@@ -14,8 +14,7 @@
 
 #include <osquery/database.h>
 #include <osquery/registry_factory.h>
-
-#include "osquery/filesystem/fileops.h"
+#include <osquery/filesystem/fileops.h>
 
 namespace osquery {
 

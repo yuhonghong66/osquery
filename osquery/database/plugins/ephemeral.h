@@ -12,7 +12,7 @@
 #include <osquery/logger.h>
 #include <osquery/registry_factory.h>
 
-#include "boost/variant.hpp"
+#include <boost/variant.hpp>
 
 namespace osquery {
 

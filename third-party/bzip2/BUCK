@@ -1,0 +1,25 @@
+# @generated
+
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_prebuilt_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_tp_prebuilt_cxx_library(
+    name = "bzip2",
+    platforms = [
+        "linux-x86_64",
+    ],
+    sha256sums = {
+        "linux-x86_64": "1cc3eaf8fe78f19fcae9f71065b04bd2dedb4862081f1d1c96e0668f3df864c8",
+    },
+    static_libs = [
+        "lib/libbz2.a",
+    ],
+    linker_flags = [
+
+    ],
+    deps = [
+
+    ],
+    version = "1.0.6",
+)

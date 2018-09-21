@@ -1,0 +1,25 @@
+# @generated
+
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_prebuilt_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_tp_prebuilt_cxx_library(
+    name = "libudev",
+    platforms = [
+        "linux-x86_64",
+    ],
+    sha256sums = {
+        "linux-x86_64": "fc1483fa27cb92876661e453bceef0c5752e4dbe83074a1653928ce44078aa34",
+    },
+    static_libs = [
+        "lib/libudev.a",
+    ],
+    linker_flags = [
+
+    ],
+    deps = [
+
+    ],
+    version = "173",
+)

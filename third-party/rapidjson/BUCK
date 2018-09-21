@@ -1,0 +1,27 @@
+# @generated
+
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_prebuilt_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_tp_prebuilt_cxx_library(
+    name = "rapidjson",
+    platforms = [
+        "linux-x86_64",
+        "macos-x86_64",
+    ],
+    sha256sums = {
+        "linux-x86_64": "f9a3d4e71cb72f00372696fb6c2c14094cec30519a692982de5b893a3562f244",
+        "macos-x86_64": "ab8c220677cc03424d0683e36542a9dcd4eac1ff99ceae70007ce6e2462da9fa",
+    },
+    static_libs = [
+
+    ],
+    linker_flags = [
+
+    ],
+    deps = [
+
+    ],
+    version = "1.1.0",
+)

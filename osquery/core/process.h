@@ -35,6 +35,9 @@
 
 #include <osquery/core.h>
 #include <osquery/system.h>
+// FIXME(fmanco): env functions were split but most usages still include
+// process.h. Once those includes are fixed this can be removed.
+#include <osquery/utils/system/env.h>
 
 namespace osquery {
 
@@ -225,19 +228,6 @@ inline void sleepFor(size_t msec) {
   std::chrono::milliseconds mduration(msec);
   std::this_thread::sleep_for(mduration);
 }
-
-/// Set the enviroment variable name with value value.
-bool setEnvVar(const std::string& name, const std::string& value);
-
-/// Unsets the environment variable specified by name.
-bool unsetEnvVar(const std::string& name);
-
-/**
- * @brief Returns the value of the specified environment variable name.
- *
- * If the environment variable does not exist, boost::none is returned.
- */
-boost::optional<std::string> getEnvVar(const std::string& name);
 
 /**
  * @brief Returns a handle of the specified module path

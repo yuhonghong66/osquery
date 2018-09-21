@@ -1,0 +1,14 @@
+library(
+    name = "sqlite",
+    version = "3.24.0",
+    platforms = [
+        "linux-x86_64",
+        "macos-x86_64",
+    ],
+    linker_flags = [
+        "-ldl",
+    ],
+    deps = [
+        "pthread:pthread",
+    ],
+)

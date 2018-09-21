@@ -1,0 +1,23 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_cxx_library(
+    name = "osquery-cpp2",
+    srcs = [
+        "gen/Extension.cpp",
+        "gen/ExtensionManager.cpp",
+        "gen/osquery_constants.cpp",
+        "gen/osquery_types.cpp",
+    ],
+    header_namespace = "",
+    exported_headers = {
+        "Extension.h": "gen/Extension.h",
+        "ExtensionManager.h": "gen/ExtensionManager.h",
+        "osquery_constants.h": "gen/osquery_constants.h",
+        "osquery_types.h": "gen/osquery_types.h",
+    },
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_tp_target("thrift"),
+    ],
+)

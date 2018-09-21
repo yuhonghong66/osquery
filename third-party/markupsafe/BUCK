@@ -1,0 +1,20 @@
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_prebuilt_python_library")
+
+osquery_tp_prebuilt_python_library(
+    name = "markupsafe",
+    filenames = {
+        "linux-x86_64": "MarkupSafe-1.1.0-cp37-cp37m-manylinux1_x86_64.whl",
+        "macos-x86_64": "MarkupSafe-1.1.0-cp37-cp37m-macosx_10_6_intel.whl",
+        "freebsd-x86_64": "py36-MarkupSafe-1.0.zip",
+    },
+    platforms = [
+        "linux-x86_64",
+        "macos-x86_64",
+        "freebsd-x86_64",
+    ],
+    sha1sums = {
+        "linux-x86_64": "17ad72c7ce71a33144455048af1a5a3538ca1750",
+        "macos-x86_64": "eb3e78cf203e2cd0eaa406ccf157cb613f9f28d8",
+        "freebsd-x86_64": "925a0b34f901f99aeadd4d91a1dd676b3eed494f",
+    },
+)

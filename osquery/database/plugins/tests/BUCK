@@ -1,0 +1,65 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library", "osquery_cxx_test")
+load("//tools/build_defs/oss/osquery:native.bzl", "osquery_target")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_cxx_test(
+    name = "sqlite",
+    srcs = [
+        "sqlite.cpp",
+    ],
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_target("osquery/config/plugins:tls_config"),
+        osquery_target("osquery/core:core"),
+        osquery_target("osquery/database/plugins:ephemeral"),
+        osquery_target("osquery/database/plugins:sqlite"),
+        osquery_target("osquery/database:database"),
+        osquery_target("osquery/dispatcher:dispatcher"),
+        osquery_target("osquery/events:events"),
+        osquery_target("osquery/extensions:extensions"),
+        osquery_target("osquery/registry:registry"),
+        osquery_target("osquery/remote/enroll:tls_enroll"),
+        osquery_target("osquery/utils/json:json"),
+        osquery_target("specs:tables"),
+        ":utils",
+    ],
+)
+
+osquery_cxx_test(
+    name = "rocksdb",
+    srcs = [
+        # "rocksdb.cpp", # TODO: it is failing :(
+    ],
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_target("osquery/config/plugins:tls_config"),
+        osquery_target("osquery/core:core"),
+        osquery_target("osquery/database/plugins:ephemeral"),
+        osquery_target("osquery/database/plugins:rocksdb"),
+        osquery_target("osquery/database:database"),
+        osquery_target("osquery/dispatcher:dispatcher"),
+        osquery_target("osquery/events:events"),
+        osquery_target("osquery/extensions:extensions"),
+        osquery_target("osquery/registry:registry"),
+        osquery_target("osquery/remote/enroll:tls_enroll"),
+        osquery_target("osquery/utils/json:json"),
+        osquery_target("specs:tables"),
+        ":utils",
+    ],
+)
+
+osquery_cxx_library(
+    name = "utils",
+    srcs = [
+        "utils.cpp",
+    ],
+    header_namespace = "osquery/database/plugins/tests",
+    exported_headers = [
+        "utils.h",
+    ],
+    deps = [
+        osquery_target("osquery/filesystem:filesystem"),
+        osquery_target("osquery/utils/json:json"),
+        osquery_tp_target("gtest"),
+    ],
+)

@@ -1,0 +1,21 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:native.bzl", "osquery_target")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_cxx_library(
+    name = "smart",
+    srcs = [
+        "smart_drives.cpp",
+    ],
+    header_namespace = "osquery/tables/smart",
+    exported_headers = [
+        "smart_drives.h",
+    ],
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_target("osquery:headers"),
+        osquery_target("osquery/logger:logger"),
+        osquery_target("osquery/sql:sql"),
+        osquery_tp_target("smartmontools", "libsmartctl"),
+    ],
+)

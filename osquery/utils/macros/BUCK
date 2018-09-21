@@ -1,0 +1,10 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+
+osquery_cxx_library(
+    name = "macros",
+    header_namespace = "osquery/utils/macros",
+    exported_headers = [
+        "macros.h",
+    ],
+    visibility = ["PUBLIC"],
+)

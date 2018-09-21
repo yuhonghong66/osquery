@@ -33,7 +33,10 @@
 #include <pthread_np.h>
 #endif
 
-#include <ctime>
+#if defined(__APPLE__)
+#include <sys/kauth.h>
+#endif
+
 #include <sstream>
 
 #include <boost/algorithm/string/case_conv.hpp>
@@ -46,7 +49,7 @@
 
 #include <osquery/core.h>
 #include <osquery/database.h>
-#include <osquery/filesystem.h>
+#include <osquery/filesystem/filesystem.h>
 #include <osquery/flags.h>
 #include <osquery/logger.h>
 #include <osquery/sql.h>
@@ -55,9 +58,11 @@
 #ifdef WIN32
 #include "osquery/core/windows/wmi.h"
 #endif
-#include "osquery/core/conversions.h"
+#include "osquery/utils/info/tool_type.h"
+#include "osquery/utils/info/platform_type.h"
+#include "osquery/utils/conversions/tryto.h"
+#include "osquery/utils/config/default_paths.h"
 #include "osquery/core/process.h"
-#include "osquery/core/utils.h"
 
 namespace fs = boost::filesystem;
 
@@ -97,18 +102,6 @@ const std::vector<std::string> kPlaceholderHardwareUUIDList{
     "03020100-0504-0706-0809-0a0b0c0d0e0f",
     "10000000-0000-8000-0040-000000000000",
 };
-
-#ifdef WIN32
-struct tm* gmtime_r(time_t* t, struct tm* result) {
-  _gmtime64_s(result, t);
-  return result;
-}
-
-struct tm* localtime_r(time_t* t, struct tm* result) {
-  _localtime64_s(result, t);
-  return result;
-}
-#endif
 
 std::string getHostname() {
   long max_path = 256;
@@ -284,52 +277,6 @@ std::string getHostIdentifier() {
     }
   }
   return ident;
-}
-
-std::string toAsciiTime(const struct tm* tm_time) {
-  if (tm_time == nullptr) {
-    return "";
-  }
-
-  auto time_str = platformAsctime(tm_time);
-  boost::algorithm::trim(time_str);
-  return time_str + " UTC";
-}
-
-std::string toAsciiTimeUTC(const struct tm* tm_time) {
-  size_t epoch = toUnixTime(tm_time);
-  struct tm tptr;
-
-  memset(&tptr, 0, sizeof(tptr));
-
-  if (epoch == (size_t)-1) {
-    return "";
-  }
-
-  gmtime_r((time_t*)&epoch, &tptr);
-  return toAsciiTime(&tptr);
-}
-
-std::string getAsciiTime() {
-  auto result = std::time(nullptr);
-
-  struct tm now;
-  gmtime_r(&result, &now);
-
-  return toAsciiTime(&now);
-}
-
-size_t toUnixTime(const struct tm* tm_time) {
-  struct tm result;
-  memset(&result, 0, sizeof(result));
-
-  memcpy(&result, tm_time, sizeof(result));
-  return mktime(&result);
-}
-
-size_t getUnixTime() {
-  std::time_t ut = std::time(nullptr);
-  return ut < 0 ? 0 : ut;
 }
 
 Status checkStalePid(const std::string& content) {

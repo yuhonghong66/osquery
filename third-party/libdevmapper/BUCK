@@ -1,0 +1,28 @@
+# @generated
+
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_prebuilt_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_tp_prebuilt_cxx_library(
+    name = "libdevmapper",
+    platforms = [
+        "linux-x86_64",
+    ],
+    sha256sums = {
+        "linux-x86_64": "54fc7a991f42e3693fa3aa9cafe39f0b65a6fe29620f3146fd05f1a1f1bf1eae",
+    },
+    static_libs = [
+        "lib/libdaemonclient.a",
+        "lib/libdevmapper.a",
+        "lib/liblvm-internal.a",
+        "lib/liblvm2app.a",
+    ],
+    linker_flags = [
+
+    ],
+    deps = [
+
+    ],
+    version = "2.2.02.173",
+)

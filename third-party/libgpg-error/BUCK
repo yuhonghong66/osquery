@@ -1,0 +1,25 @@
+# @generated
+
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_prebuilt_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_tp_prebuilt_cxx_library(
+    name = "libgpg-error",
+    platforms = [
+        "linux-x86_64",
+    ],
+    sha256sums = {
+        "linux-x86_64": "6976db62b22844015e934f7225b236c8c4851c515815efa9967575eadd6dabf5",
+    },
+    static_libs = [
+        "lib/libgpg-error.a",
+    ],
+    linker_flags = [
+
+    ],
+    deps = [
+
+    ],
+    version = "1.27",
+)

@@ -8,6 +8,8 @@
  *  You may select, at your option, one of the above-listed licenses.
  */
 
+#include "aws_kinesis.h"
+
 #include <algorithm>
 #include <chrono>
 #include <iterator>
@@ -26,8 +28,7 @@
 #include <osquery/registry.h>
 #include <osquery/system.h>
 
-#include "osquery/core/process.h"
-#include "osquery/logger/plugins/aws_kinesis.h"
+#include <osquery/core/process.h>
 
 namespace osquery {
 

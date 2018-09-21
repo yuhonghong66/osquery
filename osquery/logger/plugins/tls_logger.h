@@ -10,10 +10,10 @@
 
 #pragma once
 
-#include <osquery/dispatcher.h>
-#include <osquery/logger.h>
+#include "buffered.h"
 
-#include "osquery/logger/plugins/buffered.h"
+#include <osquery/dispatcher.h>
+#include <osquery/plugins/logger.h>
 
 namespace osquery {
 

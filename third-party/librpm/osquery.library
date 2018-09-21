@@ -1,0 +1,15 @@
+library(
+    name = "librpm",
+    version = "4.14.1",
+    platforms = [
+        "linux-x86_64",
+    ],
+    deps = [
+        "berkeley-db:db",
+        "bzip2:bzip2",
+        "lzma:lzma",
+        "openssl:openssl",
+        "popt:popt",
+        "zlib:zlib",
+    ],
+)

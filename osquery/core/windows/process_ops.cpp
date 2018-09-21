@@ -8,8 +8,8 @@
  *  You may select, at your option, one of the above-listed licenses.
  */
 
-#include "osquery/core/windows/process_ops.h"
-#include "osquery/core/conversions.h"
+#include <osquery/core/windows/process_ops.h>
+#include <osquery/utils/conversions/tryto.h>
 
 namespace osquery {
 
@@ -96,7 +96,7 @@ int getGidFromSid(PSID sid) {
 
 std::unique_ptr<BYTE[]> getSidFromUsername(std::wstring accountName) {
   if (accountName.empty()) {
-    LOG(INFO) << "No account name provided.";
+    LOG(INFO) << "No account name provided";
     return nullptr;
   }
 
@@ -196,43 +196,6 @@ bool isLauncherProcessDead(PlatformProcess& launcher) {
     return false;
   }
   return (code != STILL_ACTIVE);
-}
-
-bool setEnvVar(const std::string& name, const std::string& value) {
-  return (::SetEnvironmentVariableA(name.c_str(), value.c_str()) == TRUE);
-}
-
-bool unsetEnvVar(const std::string& name) {
-  return (::SetEnvironmentVariableA(name.c_str(), nullptr) == TRUE);
-}
-
-boost::optional<std::string> getEnvVar(const std::string& name) {
-  const auto kInitialBufferSize = 1024;
-  std::vector<char> buf;
-  buf.assign(kInitialBufferSize, '\0');
-
-  auto value_len =
-      ::GetEnvironmentVariableA(name.c_str(), buf.data(), kInitialBufferSize);
-  if (value_len == 0) {
-    return boost::none;
-  }
-
-  // It is always possible that between the first GetEnvironmentVariableA call
-  // and this one, a change was made to our target environment variable that
-  // altered the size. Currently, we ignore this scenario and fail if the
-  // returned size is greater than what we expect.
-  if (value_len > kInitialBufferSize) {
-    buf.assign(value_len, '\0');
-    value_len = ::GetEnvironmentVariableA(name.c_str(), buf.data(), value_len);
-    if (value_len == 0 || value_len > buf.size()) {
-      // The size returned is greater than the size we expected. Currently, we
-      // will not deal with this scenario and just return as if an error has
-      // occurred.
-      return boost::none;
-    }
-  }
-
-  return std::string(buf.data(), value_len);
 }
 
 ModuleHandle platformModuleOpen(const std::string& path) {

@@ -24,13 +24,12 @@
 #include <boost/filesystem/operations.hpp>
 #include <boost/property_tree/json_parser.hpp>
 
-#include <osquery/core.h>
-#include <osquery/filesystem.h>
+#include <osquery/filesystem/filesystem.h>
 #include <osquery/logger.h>
 #include <osquery/sql.h>
 #include <osquery/system.h>
 
-#include "osquery/core/json.h"
+#include <osquery/utils/json.h>
 
 namespace pt = boost::property_tree;
 namespace fs = boost::filesystem;

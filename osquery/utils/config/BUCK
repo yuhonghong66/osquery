@@ -1,0 +1,13 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+
+osquery_cxx_library(
+    name = "config",
+    srcs = [
+        "default_paths.cpp",
+    ],
+    header_namespace = "osquery/utils/config",
+    exported_headers = [
+        "default_paths.h",
+    ],
+    visibility = ["PUBLIC"],
+)

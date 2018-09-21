@@ -1,0 +1,27 @@
+# @generated
+
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_prebuilt_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_tp_prebuilt_cxx_library(
+    name = "sqlite",
+    platforms = [
+        "linux-x86_64",
+        "macos-x86_64",
+    ],
+    sha256sums = {
+        "linux-x86_64": "d4fe4e10c01f508210670bf1a67d0445491df8fe7322161e3322b912529e33f0",
+        "macos-x86_64": "995b47f65dc70f0ee76b0aa700e8ed3135e914ad3671c5ee43eab6d964b13a6a",
+    },
+    static_libs = [
+        "lib/libsqlite3.a",
+    ],
+    linker_flags = [
+        "-ldl",
+    ],
+    deps = [
+        osquery_tp_target("pthread", "pthread"),
+    ],
+    version = "3.24.0",
+)

@@ -12,8 +12,7 @@
 #include <osquery/flags.h>
 #include <osquery/logger.h>
 
-#include "osquery/core/conversions.h"
-#include "osquery/core/process.h"
+#include <osquery/core/process.h>
 
 namespace osquery {
 

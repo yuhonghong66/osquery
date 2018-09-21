@@ -1,0 +1,33 @@
+# @generated
+
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_prebuilt_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_tp_prebuilt_cxx_library(
+    name = "boost",
+    platforms = [
+        "linux-x86_64",
+        "macos-x86_64",
+    ],
+    sha256sums = {
+        "linux-x86_64": "3a24d65730beb3a718ee443eaedac40033d349582eeb83664ea2529080c812ba",
+        "macos-x86_64": "69c884d27838a11f9a45b78e03eb12a425d554dac4ad8c6ef19f91e63e945286",
+    },
+    static_libs = [
+        "lib/libboost_chrono-mt.a",
+        "lib/libboost_context-mt.a",
+        "lib/libboost_coroutine-mt.a",
+        "lib/libboost_filesystem-mt.a",
+        "lib/libboost_regex-mt.a",
+        "lib/libboost_system-mt.a",
+        "lib/libboost_thread-mt.a",
+    ],
+    linker_flags = [
+
+    ],
+    deps = [
+
+    ],
+    version = "1.66.0",
+)

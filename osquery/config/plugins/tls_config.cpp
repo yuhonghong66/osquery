@@ -11,19 +11,17 @@
 #include <sstream>
 #include <vector>
 
-#include <osquery/config.h>
+#include <osquery/config/config.h>
+#include <osquery/config/plugins/tls_config.h>
 #include <osquery/dispatcher.h>
 #include <osquery/enroll.h>
 #include <osquery/flags.h>
 #include <osquery/registry.h>
-
-#include "osquery/core/conversions.h"
-#include "osquery/core/json.h"
-#include "osquery/remote/requests.h"
-#include "osquery/remote/serializers/json.h"
-#include "osquery/remote/utility.h"
-
-#include "osquery/config/plugins/tls_config.h"
+#include <osquery/remote/requests.h>
+#include <osquery/remote/serializers/json.h>
+#include <osquery/remote/utility.h>
+#include <osquery/utils/json.h>
+#include <osquery/utils/chars.h>
 
 namespace osquery {
 

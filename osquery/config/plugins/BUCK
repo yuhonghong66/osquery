@@ -1,0 +1,34 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:native.bzl", "osquery_target")
+
+osquery_cxx_library(
+    name = "filesystem_config",
+    srcs = [
+        "filesystem_config.cpp",
+    ],
+    link_whole = True,
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_target("osquery/config:config"),
+        osquery_target("osquery/utils/config:config"),
+    ],
+)
+
+osquery_cxx_library(
+    name = "tls_config",
+    srcs = [
+        "tls_config.cpp",
+    ],
+    header_namespace = "osquery/config/plugins",
+    exported_headers = [
+        "tls_config.h",
+    ],
+    link_whole = True,
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_target("osquery/config:config"),
+        osquery_target("osquery/remote:requests"),
+        osquery_target("osquery/remote:utility"),
+        osquery_target("osquery/remote/serializers:json"),
+    ],
+)

@@ -1,0 +1,16 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:native.bzl", "osquery_target")
+
+osquery_cxx_library(
+    name = "distributed",
+    srcs = ["distributed.cpp"],
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_target("osquery/core:core"),
+        osquery_target("osquery/core/plugins:plugins"),
+        osquery_target("osquery/database:database"),
+        osquery_target("osquery/logger:logger"),
+        osquery_target("osquery/utils/json:json"),
+        osquery_target("osquery/utils/system:time"),
+    ],
+)

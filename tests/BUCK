@@ -1,0 +1,31 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:native.bzl", "osquery_target")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_cxx_library(
+    name = "helper",
+    srcs = [
+        "test_additional_util.cpp",
+        "test_util.cpp",
+    ],
+    header_namespace = "osquery/tests/",
+    exported_headers = [
+        "test_additional_util.h",
+        "test_util.h",
+    ],
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_target("osquery/database/plugins:ephemeral"),
+        osquery_target("osquery/sql:sql"),
+        osquery_target("osquery/utils:utils"),
+        osquery_tp_target("boost"),
+        osquery_tp_target("gtest"),
+        osquery_target("osquery/core:core"),
+        osquery_target("osquery/filesystem:filesystem"),
+        osquery_target("osquery/remote/serializers:json"),
+        osquery_target("osquery/utils/system:time"),
+        osquery_target("osquery/core:core"),
+        osquery_target("specs:tables"),
+        osquery_target("osquery/utils/conversions:conversions"),
+    ],
+)

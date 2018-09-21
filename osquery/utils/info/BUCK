@@ -1,0 +1,22 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:native.bzl", "osquery_target")
+
+osquery_cxx_library(
+    name = "info",
+    srcs = [
+        "platform_type.cpp",
+        "tool_type.cpp",
+        "version.cpp",
+    ],
+    header_namespace = "osquery/utils/info",
+    exported_headers = [
+        "platform_type.h",
+        "tool_type.h",
+        "version.h",
+    ],
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_target("osquery/utils/conversions:conversions"),
+        osquery_target("osquery/utils/macros:macros"),
+    ],
+)

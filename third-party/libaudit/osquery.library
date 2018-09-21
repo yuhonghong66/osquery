@@ -1,0 +1,9 @@
+library(
+    name = "libaudit",
+    version = "2.4.2",
+    platforms = [
+        "linux-x86_64",
+    ],
+    deps = [
+    ],
+)

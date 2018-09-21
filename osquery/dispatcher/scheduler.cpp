@@ -14,7 +14,7 @@
 #include <boost/format.hpp>
 #include <boost/io/detail/quoted_manip.hpp>
 
-#include <osquery/config.h>
+#include <osquery/config/config.h>
 #include <osquery/core.h>
 #include <osquery/database.h>
 #include <osquery/flags.h>
@@ -23,7 +23,7 @@
 #include <osquery/numeric_monitoring.h>
 #include <osquery/profiler/profiler.h>
 #include <osquery/query.h>
-#include <osquery/system.h>
+#include <osquery/utils/system/time.h>
 
 #include "osquery/config/parsers/decorators.h"
 #include "osquery/core/process.h"

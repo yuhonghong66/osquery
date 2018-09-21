@@ -31,7 +31,7 @@
 #include <openssl/crypto.h>
 #include <openssl/ssl.h>
 
-#include "osquery/remote/uri.h"
+#include <osquery/remote/uri.h>
 
 namespace boost_system = boost::system;
 namespace boost_asio = boost::asio;

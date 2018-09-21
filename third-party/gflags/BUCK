@@ -1,0 +1,28 @@
+# @generated
+
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_prebuilt_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_tp_prebuilt_cxx_library(
+    name = "gflags",
+    platforms = [
+        "linux-x86_64",
+        "macos-x86_64",
+    ],
+    sha256sums = {
+        "linux-x86_64": "5e0813ea29d5ba739c089ae21dccf5b7d4ec6f7a7d9550da0834476fade2b60c",
+        "macos-x86_64": "217fd2573443981bc8e521fcf4d8201ba4d3c29cace1b9a537f94be08df7ebb6",
+    },
+    static_libs = [
+        "lib/libgflags.a",
+        "lib/libgflags_nothreads.a",
+    ],
+    linker_flags = [
+
+    ],
+    deps = [
+
+    ],
+    version = "2.2.1",
+)

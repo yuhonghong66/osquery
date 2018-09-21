@@ -1,0 +1,18 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:platforms.bzl", "LINUX", "MACOSX")
+
+osquery_cxx_library(
+    name = "libresolv",
+    exported_platform_linker_flags = [
+        (
+            LINUX,
+            ["-lresolv"],
+        ),
+        (
+            MACOSX,
+            ["-lresolv"],
+        ),
+    ],
+    external = True,
+    visibility = ["PUBLIC"],
+)

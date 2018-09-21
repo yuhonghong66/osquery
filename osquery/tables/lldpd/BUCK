@@ -1,0 +1,25 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:native.bzl", "osquery_target")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+load("//tools/build_defs/oss/osquery:platforms.bzl", "FREEBSD")
+
+osquery_cxx_library(
+    name = "lldpd",
+    srcs = [
+        "lldp_neighbors.cpp",
+    ],
+    exported_post_platform_linker_flags = [
+        (
+            FREEBSD,
+            [
+                "-llldpctl",
+            ],
+        ),
+    ],
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_target("osquery:headers"),
+        osquery_target("osquery/logger:logger"),
+        osquery_tp_target("lldpd"),
+    ],
+)

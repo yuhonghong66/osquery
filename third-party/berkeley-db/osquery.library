@@ -1,0 +1,12 @@
+library(
+    name = "berkeley-db",
+    version = "5.3.28",
+    platforms = [
+        "linux-x86_64",
+    ],
+    deps = [
+    ],
+    alias = [
+        "db",
+    ],
+)

@@ -14,13 +14,12 @@
 #include <cstdlib>
 #include <sstream>
 
+#include <osquery/core/process.h>
 #include <osquery/extensions.h>
 #include <osquery/logger.h>
 #include <osquery/registry.h>
-
-#include "osquery/core/conversions.h"
-#include "osquery/core/json.h"
-#include "osquery/core/process.h"
+#include <osquery/utils/conversions/split.h>
+#include <osquery/utils/json.h>
 
 namespace osquery {
 

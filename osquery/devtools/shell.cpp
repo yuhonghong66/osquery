@@ -32,18 +32,19 @@
 
 #include <boost/algorithm/string/predicate.hpp>
 
-#include <osquery/config.h>
+#include <osquery/core/process.h>
+#include <osquery/config/config.h>
 #include <osquery/database.h>
-#include <osquery/filesystem.h>
+#include <osquery/devtools/devtools.h>
+#include <osquery/filesystem/filesystem.h>
 #include <osquery/flags.h>
 #include <osquery/packs.h>
 #include <osquery/registry_factory.h>
-
-#include "osquery/core/conversions.h"
-#include "osquery/core/process.h"
-#include "osquery/devtools/devtools.h"
-#include "osquery/filesystem/fileops.h"
-#include "osquery/sql/virtual_table.h"
+#include <osquery/sql/virtual_table.h>
+#include <osquery/utils/info/version.h>
+#include <osquery/utils/chars.h>
+#include <osquery/utils/conversions/join.h>
+#include <osquery/utils/conversions/tryto.h>
 
 #if defined(SQLITE_ENABLE_WHERETRACE)
 extern int sqlite3WhereTrace;

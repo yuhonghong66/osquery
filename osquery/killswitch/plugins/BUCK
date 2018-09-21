@@ -1,0 +1,63 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library", "osquery_cxx_test")
+load("//tools/build_defs/oss/osquery:native.bzl", "osquery_target")
+
+osquery_cxx_library(
+    name = "filesystem",
+    srcs = [
+        "killswitch_filesystem.cpp",
+    ],
+    header_namespace = "osquery/killswitch/plugins",
+    exported_headers = [
+        "killswitch_filesystem.h",
+    ],
+    link_whole = True,
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_target("osquery/killswitch:killswitch"),
+        osquery_target("osquery/utils/config:config"),
+    ],
+)
+
+osquery_cxx_library(
+    name = "tls",
+    srcs = [
+        "killswitch_tls.cpp",
+    ],
+    header_namespace = "osquery/killswitch/plugins",
+    exported_headers = [
+        "killswitch_tls.h",
+    ],
+    link_whole = True,
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_target("osquery/killswitch:killswitch"),
+        osquery_target("osquery/remote:utility"),
+        osquery_target("osquery/remote/serializers:json"),
+    ],
+)
+
+osquery_cxx_test(
+    name = "tests",
+    srcs = [
+        "tests/killswitch_filesystem_tests.cpp",
+    ],
+    env = {
+        "TEST_CONF_FILES_DIR": "$(location {})".format(
+            osquery_target("tools/tests:conf_files"),
+        ),
+    },
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_target("osquery/config/tests:test_utils"),
+        osquery_target("osquery/config/plugins:tls_config"),
+        osquery_target("osquery/database:database"),
+        osquery_target("osquery/database/plugins:ephemeral"),
+        osquery_target("osquery/events:events"),
+        osquery_target("osquery/extensions:extensions"),
+        osquery_target("osquery/remote/enroll:tls_enroll"),
+        osquery_target("osquery/utils/conversions:conversions"),
+        osquery_target("osquery/utils/info:info"),
+        osquery_target("osquery/killswitch/plugins:filesystem"),
+        osquery_target("tests:helper"),
+    ],
+)

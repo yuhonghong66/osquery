@@ -1,0 +1,24 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:native.bzl", "osquery_target")
+load("//tools/build_defs/oss/osquery:platforms.bzl", "POSIX", "WINDOWS")
+
+osquery_cxx_library(
+    name = "profiler",
+    headers = glob(["*.h"]),
+    header_namespace = "osquery/profiler",
+    exported_headers = glob(["*.h"]),
+    platform_srcs = [
+        (
+            POSIX,
+            ["posix/profiler.cpp"],
+        ),
+        (
+            WINDOWS,
+            ["windows/profiler.cpp"],
+        ),
+    ],
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_target("osquery/core:core"),
+    ],
+)

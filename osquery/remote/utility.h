@@ -14,10 +14,10 @@
 #include <osquery/flags.h>
 #include <osquery/system.h>
 
-#include "osquery/remote/requests.h"
-#include "osquery/remote/transports/tls.h"
+#include <osquery/remote/requests.h>
+#include <osquery/remote/transports/tls.h>
 
-#include "osquery/core/process.h"
+#include <osquery/core/process.h>
 
 namespace osquery {
 

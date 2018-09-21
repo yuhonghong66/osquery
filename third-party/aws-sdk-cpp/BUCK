@@ -1,0 +1,32 @@
+# @generated
+
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_prebuilt_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_tp_prebuilt_cxx_library(
+    name = "aws-sdk-cpp",
+    platforms = [
+        "linux-x86_64",
+        "macos-x86_64",
+    ],
+    sha256sums = {
+        "linux-x86_64": "38d8ab7feccc25ba89adb49ffbcbe8c9b274191f2eb9172371c94f2ceb5a1159",
+        "macos-x86_64": "1d1974a6bb22dbe40ebd98547e775364357e65e81cda52b6fb2485250fdd15ba",
+    },
+    static_libs = [
+        "lib/libaws-cpp-sdk-core.a",
+        "lib/libaws-cpp-sdk-ec2.a",
+        "lib/libaws-cpp-sdk-firehose.a",
+        "lib/libaws-cpp-sdk-kinesis.a",
+        "lib/libaws-cpp-sdk-sts.a",
+        "lib/libtesting-resources.a",
+    ],
+    linker_flags = [
+
+    ],
+    deps = [
+
+    ],
+    version = "1.4.55",
+)

@@ -11,9 +11,8 @@
 #pragma once
 
 #include <osquery/flags.h>
-
-#include "osquery/remote/http_client.h"
-#include "osquery/remote/requests.h"
+#include <osquery/remote/http_client.h>
+#include <osquery/remote/requests.h>
 
 namespace osquery {
 
@@ -117,6 +116,7 @@ class TLSTransport : public Transport {
   /// Storage for the HTTP response object
   http::Response response_;
 
+/*
  private:
   FRIEND_TEST(TLSTransportsTests, test_call);
   FRIEND_TEST(TLSTransportsTests, test_call_with_params);
@@ -126,5 +126,7 @@ class TLSTransport : public Transport {
   FRIEND_TEST(TLSTransportsTests, test_call_http);
 
   friend class TestDistributedPlugin;
+*/
+
 };
 }

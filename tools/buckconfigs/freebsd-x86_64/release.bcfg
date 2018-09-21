@@ -1,0 +1,21 @@
+<file:base.bcfg>
+
+[cxx]
+  cflags = \
+    $(config cxx_base.cflags) \
+    -Os
+
+  cppflags = \
+    $(config cxx_base.cppflags) \
+    -DNDEBUG
+
+  cxxflags = \
+    $(config cxx_base.cxxflags) \
+    -Os
+
+  cxxppflags = \
+    $(config cxx_base.cxxppflags) \
+    -DNDEBUG
+
+  ldflags = \
+    $(config cxx_base.ldflags)

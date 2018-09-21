@@ -1,0 +1,25 @@
+# @generated
+
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_prebuilt_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_tp_prebuilt_cxx_library(
+    name = "libgcrypt",
+    platforms = [
+        "linux-x86_64",
+    ],
+    sha256sums = {
+        "linux-x86_64": "338bb77bac1565319f69a210db5b50e0410046628b05f9c5ed3521607cbbf711",
+    },
+    static_libs = [
+        "lib/libgcrypt.a",
+    ],
+    linker_flags = [
+
+    ],
+    deps = [
+        osquery_tp_target("libgpg-error", "libgpg-error"),
+    ],
+    version = "1.8.1",
+)

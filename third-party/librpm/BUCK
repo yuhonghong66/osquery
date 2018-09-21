@@ -1,0 +1,34 @@
+# @generated
+
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_prebuilt_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_tp_prebuilt_cxx_library(
+    name = "librpm",
+    platforms = [
+        "linux-x86_64",
+    ],
+    sha256sums = {
+        "linux-x86_64": "5aca71879ab793c1029684dfa59baec462584ba3f4e3f6444c374b160b5afde8",
+    },
+    static_libs = [
+        "lib/librpm.a",
+        "lib/librpmbuild.a",
+        "lib/librpmio.a",
+        "lib/librpmsign.a",
+    ],
+    linker_flags = [
+
+    ],
+    deps = [
+        osquery_tp_target("berkeley-db", "db"),
+        osquery_tp_target("bzip2", "bzip2"),
+        osquery_tp_target("lzma", "lzma"),
+        osquery_tp_target("openssl", "crypto"),
+        osquery_tp_target("openssl", "ssl"),
+        osquery_tp_target("popt", "popt"),
+        osquery_tp_target("zlib", "zlib"),
+    ],
+    version = "4.14.1",
+)

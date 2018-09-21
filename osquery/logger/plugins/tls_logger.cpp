@@ -8,18 +8,19 @@
  *  You may select, at your option, one of the above-listed licenses.
  */
 
+#include "tls_logger.h"
+
 #include <boost/property_tree/ptree.hpp>
 
 #include <osquery/enroll.h>
 #include <osquery/flags.h>
 #include <osquery/registry.h>
 
-#include "osquery/remote/serializers/json.h"
-#include "osquery/remote/utility.h"
+#include <osquery/remote/serializers/json.h>
+#include <osquery/remote/utility.h>
 
-#include "osquery/config/parsers/decorators.h"
-#include "osquery/core/json.h"
-#include "osquery/logger/plugins/tls_logger.h"
+#include <osquery/config/parsers/decorators.h>
+#include <osquery/utils/json.h>
 
 namespace osquery {
 

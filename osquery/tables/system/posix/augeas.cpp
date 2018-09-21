@@ -10,6 +10,7 @@
 
 #include <augeas.h>
 
+#include <mutex>
 #include <sstream>
 #include <unordered_set>
 

@@ -1,0 +1,11 @@
+library(
+    name = "libmagic",
+    version = "5.32",
+    platforms = [
+        "linux-x86_64",
+        "macos-x86_64",
+    ],
+    deps = [
+        "zlib:zlib",
+    ],
+)

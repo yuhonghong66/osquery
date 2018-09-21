@@ -13,16 +13,16 @@
 
 #include <boost/algorithm/string/find.hpp>
 
-#include <osquery/config.h>
+#include <osquery/config/config.h>
 #include <osquery/core.h>
 #include <osquery/dispatcher.h>
 #include <osquery/flags.h>
 #include <osquery/registry_factory.h>
 #include <osquery/system.h>
 
-#include "osquery/config/parsers/kafka_topics.h"
-#include "osquery/logger/plugins/kafka_producer.h"
-#include "osquery/remote/transports/tls.h"
+#include <osquery/config/parsers/kafka_topics.h>
+#include <osquery/logger/plugins/kafka_producer.h>
+#include <osquery/remote/transports/tls.h>
 
 namespace osquery {
 

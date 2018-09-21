@@ -1,0 +1,25 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:native.bzl", "osquery_target")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_cxx_library(
+    name = "tls_enroll",
+    srcs = [
+        "enroll.cpp",
+        "tls_enroll.cpp",
+    ],
+    headers = ["tls_enroll.h"],
+    header_namespace = "osquery/remote/enroll",
+    link_whole = True,
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_target("osquery/core:core"),
+        osquery_target("osquery/remote:http_client"),
+        osquery_target("osquery/remote:requests"),
+        osquery_target("osquery/remote/serializers:json"),
+        osquery_target("osquery/remote/transports:tls"),
+        osquery_target("osquery/utils/json:json"),
+        osquery_target("osquery/utils/system:time"),
+        osquery_tp_target("boost"),
+    ],
+)

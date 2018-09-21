@@ -1,0 +1,22 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:native.bzl", "osquery_target")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_cxx_library(
+    name = "utility",
+    srcs = [
+        "file.cpp",
+        "osquery.cpp",
+        "time.cpp",
+    ],
+    header_namespace = "osquery/tables/utility",
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_target("osquery/config:config"),
+        osquery_target("osquery/core:core"),
+        osquery_target("osquery/filesystem:filesystem"),
+        osquery_target("osquery/utils/macros:macros"),
+        osquery_target("osquery/utils/system:system"),
+        osquery_tp_target("boost"),
+    ],
+)

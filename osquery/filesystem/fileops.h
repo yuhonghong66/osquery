@@ -29,7 +29,8 @@
 #include <boost/noncopyable.hpp>
 #include <boost/optional.hpp>
 
-#include <osquery/status.h>
+#include <osquery/utils/status.h>
+#include <osquery/utils/system/env.h>
 
 namespace osquery {
 

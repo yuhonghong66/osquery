@@ -1,0 +1,27 @@
+# @generated
+
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_prebuilt_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_tp_prebuilt_cxx_library(
+    name = "yara",
+    platforms = [
+        "linux-x86_64",
+        "macos-x86_64",
+    ],
+    sha256sums = {
+        "linux-x86_64": "4706e8312c531c436b03be4ea429a94dbd06e2cd392764febc9e259777c8fc98",
+        "macos-x86_64": "8cf4dfeb1e5f93fda206a200c1bce070c11bd486c1c335ede570980cdd196b0b",
+    },
+    static_libs = [
+        "lib/libyara.a",
+    ],
+    linker_flags = [
+
+    ],
+    deps = [
+        osquery_tp_target("openssl", "ssl"),
+    ],
+    version = "3.7.1",
+)

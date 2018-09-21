@@ -1,0 +1,35 @@
+# @generated
+
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_prebuilt_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_cxx_library(
+    name = "libsmartctl",
+    exported_deps = [
+        ":smartmontools",
+    ],
+    visibility = ["PUBLIC"],
+)
+
+osquery_tp_prebuilt_cxx_library(
+    name = "smartmontools",
+    platforms = [
+        "linux-x86_64",
+        "macos-x86_64",
+    ],
+    sha256sums = {
+        "linux-x86_64": "a63ecfbd80eb715c1278770c9be72d45578bd9650fc31196956d3a87dd3b2a66",
+        "macos-x86_64": "2ad496686cef94cf46bbf040d6a1d9aa8e051d2281246bfc7517329fc4695e67",
+    },
+    static_libs = [
+        "lib/libsmartctl.a",
+    ],
+    linker_flags = [
+
+    ],
+    deps = [
+
+    ],
+    version = "0.3.1",
+)

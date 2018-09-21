@@ -1,0 +1,15 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:platforms.bzl", "LINUX")
+
+osquery_cxx_library(
+    name = "lzma",
+    exported_platform_linker_flags = [
+        (
+            LINUX,
+            [
+                "-llzma",
+            ],
+        ),
+    ],
+    visibility = ["PUBLIC"],
+)

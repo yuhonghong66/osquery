@@ -1,0 +1,15 @@
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:native.bzl", "osquery_target")
+
+osquery_cxx_library(
+    name = "sql",
+    srcs = glob(["*.cpp"]),
+    headers = glob(["*.h"]),
+    header_namespace = "osquery/core/sql",
+    exported_headers = glob(["*.h"]),
+    visibility = ["PUBLIC"],
+    deps = [
+        osquery_target("osquery/utils/json:json"),
+        osquery_target("osquery/utils/status:status"),
+    ],
+)

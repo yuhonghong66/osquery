@@ -1,0 +1,11 @@
+library(
+    name = "rocksdb",
+    version = "5.7.2",
+    platforms = [
+        "linux-x86_64",
+        "macos-x86_64",
+    ],
+    deps = [
+        "bzip2:bzip2",
+    ],
+)

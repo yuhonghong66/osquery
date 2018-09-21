@@ -36,18 +36,21 @@
 
 #include <boost/filesystem.hpp>
 
-#include <osquery/config.h>
+#include <osquery/config/config.h>
 #include <osquery/core.h>
 #include <osquery/dispatcher.h>
 #include <osquery/events.h>
 #include <osquery/extensions.h>
-#include <osquery/filesystem.h>
+#include <osquery/filesystem/filesystem.h>
 #include <osquery/flags.h>
 #include <osquery/killswitch.h>
 #include <osquery/logger.h>
-#include <osquery/numeric_monitoring/plugin_interface.h>
+#include <osquery/numeric_monitoring.h>
+#include "osquery/utils/info/platform_type.h"
+#include "osquery/utils/config/default_paths.h"
 #include <osquery/registry.h>
-#include <osquery/system.h>
+#include <osquery/utils/info/version.h>
+#include <osquery/utils/system/time.h>
 
 #include "osquery/core/process.h"
 #include "osquery/core/watcher.h"
@@ -228,7 +231,7 @@ void initWorkDirectories() {
         recursive,
         ignore_existence);
     if (!status.ok()) {
-      LOG(ERROR) << "Could not initialize db directory " << status.what();
+      LOG(ERROR) << "Could not initialize db directory: " << status.what();
     }
   }
 }
@@ -416,7 +419,7 @@ Initializer::Initializer(int& argc, char**& argv, ToolType tool)
       VLOG(1) << "osquery initialized [version=" << kVersion << "]";
     }
   } else {
-    VLOG(1) << "osquery extension initialized [sdk=" << kSDKVersion << "]";
+    VLOG(1) << "osquery extension initialized [sdk=" << kVersion << "]";
   }
 
   if (default_flags) {

@@ -1,0 +1,25 @@
+# @generated
+
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_prebuilt_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_tp_prebuilt_cxx_library(
+    name = "libcryptsetup",
+    platforms = [
+        "linux-x86_64",
+    ],
+    sha256sums = {
+        "linux-x86_64": "ebb53650592212d67ea8c0e49b48891eec64ef370743678881985490c09adeac",
+    },
+    static_libs = [
+        "lib/libcryptsetup.a",
+    ],
+    linker_flags = [
+
+    ],
+    deps = [
+        osquery_tp_target("libgcrypt", "libgcrypt"),
+    ],
+    version = "1.7.5",
+)

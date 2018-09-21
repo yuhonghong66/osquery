@@ -16,10 +16,10 @@
 
 #include <vector>
 
+#include <osquery/core/process.h>
 #include <osquery/logger.h>
 #include <osquery/system.h>
-
-#include "osquery/core/process.h"
+#include <osquery/utils/info/platform_type.h>
 
 #ifndef NSIG
 #define NSIG 32

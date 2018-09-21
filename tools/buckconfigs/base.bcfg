@@ -1,0 +1,9 @@
+[cxx]
+  should_remap_host_platform = true
+  gtest_dep = //third-party/gtest:gtest
+
+[python#py2]
+  interpreter = python2
+
+[python#py3]
+  interpreter = python3

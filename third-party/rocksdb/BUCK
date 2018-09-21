@@ -1,0 +1,27 @@
+# @generated
+
+load("//tools/build_defs/oss/osquery:cxx.bzl", "osquery_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_prebuilt_cxx_library")
+load("//tools/build_defs/oss/osquery:third_party.bzl", "osquery_tp_target")
+
+osquery_tp_prebuilt_cxx_library(
+    name = "rocksdb",
+    platforms = [
+        "linux-x86_64",
+        "macos-x86_64",
+    ],
+    sha256sums = {
+        "linux-x86_64": "12c8abadd96ae8ac38327e8b30c195c18f30001025f400efcac82053057d9834",
+        "macos-x86_64": "95b161e7d3def2d4f9241c57061ea1cab4f64e51f0015db490ef99eff890354d",
+    },
+    static_libs = [
+        "lib/librocksdb_lite.a",
+    ],
+    linker_flags = [
+
+    ],
+    deps = [
+        osquery_tp_target("bzip2", "bzip2"),
+    ],
+    version = "5.7.2",
+)

@@ -1,0 +1,9 @@
+library(
+    name = "libudev",
+    version = "173",
+    platforms = [
+        "linux-x86_64",
+    ],
+    deps = [
+    ],
+)
