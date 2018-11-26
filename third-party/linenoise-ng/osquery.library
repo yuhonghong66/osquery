@@ -1,6 +1,6 @@
 library(
-    name = "linenoise",
-    version = "1.0.0",
+    name = "linenoise-ng",
+    version = "1.0.1",
     platforms = [
         "linux-x86_64",
         "macos-x86_64",

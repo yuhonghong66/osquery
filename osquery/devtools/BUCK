@@ -26,6 +26,6 @@ osquery_cxx_library(
         osquery_target("osquery/utils/conversions:conversions"),
         osquery_target("osquery/utils/system:env"),
         osquery_tp_target("gtest"),
-        osquery_tp_target("linenoise"),
+        osquery_tp_target("linenoise-ng"),
     ],
 )
